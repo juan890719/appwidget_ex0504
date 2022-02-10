@@ -10,6 +10,18 @@ public class SharedPreferencesUtils {
         this.context = context;
     }
 
+    public void setText(String text) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("app", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("text", text).commit();
+    }
+
+    public String getText() {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("app", Context.MODE_PRIVATE);
+        String text = sharedPreferences.getString("text", "");
+        return text;
+    }
+
     public void setMessageHistory(String message) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("app", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();

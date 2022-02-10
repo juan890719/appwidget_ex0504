@@ -29,9 +29,10 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     String message = text.getText().toString();
                     sharedPreferencesUtils.setMessageHistory(message);
-                    Intent intent = new Intent(MainActivity.this, AppWidget.class);
-                    intent.putExtra("message", message);
-                    sendBroadcast(intent);
+                    sharedPreferencesUtils.setText(message);
+//                    Intent intent = new Intent(MainActivity.this, AppWidget.class);
+//                    intent.putExtra("message", message);
+//                    sendBroadcast(intent);
                 }
             }
         });

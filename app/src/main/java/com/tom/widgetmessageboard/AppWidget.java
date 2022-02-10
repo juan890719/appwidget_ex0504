@@ -5,6 +5,7 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.RemoteViews;
 
@@ -21,13 +22,19 @@ public class AppWidget extends AppWidgetProvider {
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.app_widget);
         views.setTextViewText(R.id.appwidget_text, widgetText);
+
+        SharedPreferencesUtils sharedPreferencesUtils = new SharedPreferencesUtils(context);
+        if (sharedPreferencesUtils.getText().equals("")) {
+        } else {
+            message = sharedPreferencesUtils.getText();
+            Log.i("juan", "get sharedPreferences " + message);
+        }
         views.setTextViewText(R.id.tv_messageHistory, message);
         views.setImageViewResource(R.id.img_enlarge, R.drawable.enlarge);
 
         Intent intent = new Intent(context, MessageHistoryActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
         views.setOnClickPendingIntent(R.id.img_enlarge, pendingIntent);
-        Log.i("juan", "update!! the message is " + message);
 
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);
@@ -49,13 +56,5 @@ public class AppWidget extends AppWidgetProvider {
     @Override
     public void onDisabled(Context context) {
         // Enter relevant functionality for when the last widget is disabled
-    }
-
-    @Override
-    public void onReceive(Context context, Intent intent) {
-        super.onReceive(context, intent);
-
-        message = intent.getStringExtra("message");
-        Log.i("juan", "get Intent " + message);
     }
 }
