@@ -1,36 +1,49 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl_widget"
     style="@style/Widget.WidgetMessageBoard.AppWidget.Container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/app_widget_background"
+    android:background="@color/white"
     android:theme="@style/Theme.WidgetMessageBoard.AppWidgetContainer">
 
     <TextView
         android:id="@+id/appwidget_text"
-        style="@style/Widget.WidgetMessageBoard.AppWidget.InnerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/teal_700"
         android:contentDescription="Message Board"
-        android:text="Message Board"
+        android:gravity="center_horizontal"
+        android:text="疫把照 - 疫苗pass"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tv_messageHistory"
+        android:id="@+id/tv_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/appwidget_text"
-        android:layout_centerHorizontal="true"
-        android:text="null"
-        android:textSize="24sp" />
+        android:text="(     "
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="     )"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <ImageView
-        android:id="@+id/img_enlarge"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:src="@drawable/enlarge" />
+        android:id="@+id/img"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_below="@+id/appwidget_text"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/qr_code" />
 
 </RelativeLayout>
